@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api/api';
 
 export default function VisualizaNotaModal({ isOpen, onClose, notaId }) {
   const [nota, setNota] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const visualizarNota = async (id) => {
+  const visualizarNota = async (notaId) => {
     const token = localStorage.getItem("token");
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:8080/procuraNota/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      const response = await api.get(`/procuraNota/${notaId}`, {
+        headers: { Authorization: `Bearer ${token}`,},
       });
       setNota(response.data.nota);
       console.log("Nota encontrada:", response.data);

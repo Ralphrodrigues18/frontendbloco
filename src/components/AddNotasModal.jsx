@@ -16,6 +16,7 @@ export function AddNotasModal({ isOpen, onClose }) {
       alert(error.response?.data?.message || 'Erro ao adicionar nota');
     }
   }
+  
 
   if (!isOpen) return null;
 

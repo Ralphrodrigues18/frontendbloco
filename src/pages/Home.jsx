@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+
 import api from '../api/api';
 import { AuthContext } from '../context/AuthContext';
 
@@ -24,7 +24,7 @@ export default function Home() {
 
   const fetchNotas = async () => {
     const token = localStorage.getItem("token");
-    const response = await axios.get('https://express-postgre-bloco.vercel.app/listas', {
+    const response = await api.get('/listas', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -36,7 +36,7 @@ export default function Home() {
   const deletarNota = async (notaId) => {
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.delete(`https://express-postgre-bloco.vercel.app/deletarNota/${notaId}`, {
+      const response = await api.delete(`/deletarNota/${notaId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

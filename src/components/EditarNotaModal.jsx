@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api/api';
 
 export default function EditarNotaModal({ nota, onClose }) {
   const [titulo, setTitulo] = useState('');
@@ -33,12 +33,12 @@ export default function EditarNotaModal({ nota, onClose }) {
 
       if (metodo === 'put') {
         // PUT atualiza a nota inteira
-        response = await axios.put(`https://express-postgre-bloco.vercel.app/atualizaNota/${notaId}`, dados, {
+        response = await api.put(`/atualizaNota/${notaId}`, dados, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } else {
         // PATCH atualiza parcialmente (pode enviar só os campos que mudou)
-        response = await axios.patch(`https://express-postgre-bloco.vercel.app/corrigirNota/${notaId}`, dados, {
+        response = await api.patch(`/corrigirNota/${notaId}`, dados, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }
