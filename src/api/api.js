@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080', // ajuste para seu backend
+  baseURL: 'https://express-postgre-bloco.vercel.app/', // ajuste para seu backend
 });
 
 // Intercepta todas requisições e adiciona o token se existir
