@@ -36,7 +36,7 @@ export default function Home() {
   const deletarNota = async (notaId) => {
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.delete(`http://localhost:8080/deletarNota/${notaId}`, {
+      const response = await axios.delete(`https://express-postgre-bloco.vercel.app/deletarNota/${notaId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
