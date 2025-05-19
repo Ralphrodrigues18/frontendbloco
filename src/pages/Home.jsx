@@ -24,7 +24,7 @@ export default function Home() {
 
   const fetchNotas = async () => {
     const token = localStorage.getItem("token");
-    const response = await axios.get('http://localhost:8080/listas', {
+    const response = await axios.get('https://express-postgre-bloco.vercel.app/listas', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
