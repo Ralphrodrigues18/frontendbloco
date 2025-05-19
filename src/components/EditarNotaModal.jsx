@@ -33,12 +33,12 @@ export default function EditarNotaModal({ nota, onClose }) {
 
       if (metodo === 'put') {
         // PUT atualiza a nota inteira
-        response = await axios.put(`http://localhost:8080/atualizaNota/${notaId}`, dados, {
+        response = await axios.put(`https://express-postgre-bloco.vercel.app/atualizaNota/${notaId}`, dados, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } else {
         // PATCH atualiza parcialmente (pode enviar só os campos que mudou)
-        response = await axios.patch(`http://localhost:8080/corrigirNota/${notaId}`, dados, {
+        response = await axios.patch(`https://express-postgre-bloco.vercel.app/corrigirNota/${notaId}`, dados, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }
