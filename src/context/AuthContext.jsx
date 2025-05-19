@@ -3,13 +3,17 @@ import { createContext, useState, useEffect } from 'react';
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  // Inicializa o user já com o token do localStorage, se existir
+  const [user, setUser] = useState(() => {
+    const token = localStorage.getItem('token');
+    return token ? { token } : null;
+  });
 
   useEffect(() => {
-    // Tenta recuperar o token e user do localStorage
+    // Mantém para casos em que o token pode mudar em outro local
     const token = localStorage.getItem('token');
     if (token) {
-      setUser({ token }); // aqui você pode melhorar pegando dados do token decodificado
+      setUser({ token });
     }
   }, []);
 
